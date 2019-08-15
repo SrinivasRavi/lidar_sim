@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D5F63749-D6C7-21FB-2EE8-F330FE6966E1}</ProjectGuid>
+    <ProjectGuid>{8B98D7DC-C0FF-3057-462C-52CC0C1604B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,8 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BridgeConnector.cs" />
      <Compile Include="Assets\Scripts\Lidar\Bridge.cs" />
+     <Compile Include="Assets\Scripts\Lidar\BridgeConnector.cs" />
+     <Compile Include="Assets\Scripts\Lidar\LidarSensor.cs" />
      <Compile Include="Assets\Scripts\Lidar\Ros\CompressedImage.cs" />
      <Compile Include="Assets\Scripts\Lidar\Ros\CustomAttribute.cs" />
      <Compile Include="Assets\Scripts\Lidar\Ros\Header.cs" />
@@ -64,25 +65,23 @@
      <Compile Include="Assets\Scripts\Lidar\Ros\RosBridge.cs" />
      <Compile Include="Assets\Scripts\Lidar\Ros\Time.cs" />
      <Compile Include="Assets\Scripts\Lidar\RosWriter.cs" />
-     <Compile Include="Assets\Scripts\Lidar\SensorLidar1.cs" />
      <Compile Include="Assets\Scripts\Lidar\SimpleJSON\SimpleJSON.cs" />
      <Compile Include="Assets\Scripts\Lidar\SimpleJSON\SimpleJSONUnity.cs" />
      <Compile Include="Assets\Scripts\Lidar\Util\ApolloUtils.cs" />
      <Compile Include="Assets\Scripts\Lidar\Util\Utils.cs" />
      <Compile Include="Assets\Scripts\Lidar\Writer.cs" />
-     <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
      <None Include="Assets\Shaders\LidarShader.shader" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/srini/LGSVL/lidar_sim_4/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/srini/LGSVL/lidar_sim/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/srini/LGSVL/lidar_sim_4/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/srini/LGSVL/lidar_sim/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/srini/LGSVL/lidar_sim_4/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/srini/LGSVL/lidar_sim/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/srini/LGSVL/lidar_sim_4/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/srini/LGSVL/lidar_sim/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -280,7 +279,7 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.4f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/srini/LGSVL/lidar_sim_4/Assets/Scripts/Lidar/Ros/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/srini/LGSVL/lidar_sim/Assets/Scripts/Lidar/Ros/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/srini/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
@@ -636,7 +635,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{D159B0DC-674F-1E0A-40A1-D33334073C8E}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{350CBA83-0B71-586A-AF72-0CE8F7DA0888}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

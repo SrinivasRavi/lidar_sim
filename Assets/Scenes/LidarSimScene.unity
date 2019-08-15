@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 1144522020}
   - component: {fileID: 1144522021}
   m_Layer: 0
-  m_Name: SensorLidar1
+  m_Name: LidarSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

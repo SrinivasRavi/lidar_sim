@@ -20,9 +20,7 @@ namespace Comm
         {
             
             WebSocket Socket;
-            /*int UpdateCountRosBridge;
-            float TimeElapsed;
-            float CurrTime;*/
+
             struct Subscription
             {
                 public string Topic;
@@ -135,25 +133,20 @@ namespace Comm
                 });
 
                Socket.SendAsync(sb.ToString(), ok => { });
-                //UnityEngine.Debug.Log("should have advertized.");
-                return new RosWriter<T>(this, topic);
+               return new RosWriter<T>(this, topic);
             }
 
             static RosBridge()
             {
                 // incrase send buffer size for WebSocket C# library
                 // FragmentLength is internal filed, that's why reflection is used here
-                var f = typeof(WebSocket).GetField("FragmentLength", BindingFlags.Static | BindingFlags.NonPublic); //Sri: BindingFlags: using System.Reflection;
+                var f = typeof(WebSocket).GetField("FragmentLength", BindingFlags.Static | BindingFlags.NonPublic);
                 f.SetValue(null, 65536 - 8);
-                //UnityEngine.Debug.Log("inside static RosBridge()");
             }
 
             public RosBridge()
             {
                 Status = BridgeStatus.Disconnected;
-                /*UpdateCountRosBridge = 0;
-                TimeElapsed = 0.0f;
-                CurrTime = 0.0f;*/
             }
 
             public override void Connect(string address, int port, int version)
@@ -185,15 +178,6 @@ namespace Comm
 
             public override void Update()
             {
-                /*UpdateCountRosBridge++;
-                if (UpdateCountRosBridge > 300)
-                {
-                    UpdateCountRosBridge = 0;
-                    CurrTime = UnityEngine.Time.time;
-                    UnityEngine.Debug.Log("Rosbridge Update():" + (CurrTime - TimeElapsed));
-                    TimeElapsed = CurrTime;
-                }*/
-
                 lock (QueuedActions)
                 {
                     while (QueuedActions.Count > 0)
@@ -553,7 +537,7 @@ namespace Comm
                 }
                 else
                 {
-                    var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);//Sri: BindingFlags: using System.Reflection;
+                    var fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
 
                     sb.Append('{');
 
@@ -568,9 +552,9 @@ namespace Comm
                         var fieldType = field.FieldType;
                         var fieldValue = field.GetValue(message);
 
-                        if (fieldValue != null && typeof(IOneOf).IsAssignableFrom(fieldType)) //only when it is a OneOf field //Sri: IOneOf uses: using static Apollo.Utils;
+                        if (fieldValue != null && typeof(IOneOf).IsAssignableFrom(fieldType)) //only when it is a OneOf field 
                         {
-                            var oneof = fieldValue as IOneOf;//Sri: IOneOf uses: using static Apollo.Utils;
+                            var oneof = fieldValue as IOneOf;
                             if (oneof != null) //only when this is a non-null OneOf
                             {
                                 var oneInfo = oneof.GetOne();
@@ -755,7 +739,7 @@ namespace Comm
                 {
                     var nodeObj = node.AsObject;
                     var obj = Activator.CreateInstance(type);
-                    foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))//Sri: BindingFlags: using System.Reflection;
+                    foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
                     {
                         // UnityEngine.Debug.Log(nodeObj.ToString());
                         if (nodeObj[field.Name] != null)
